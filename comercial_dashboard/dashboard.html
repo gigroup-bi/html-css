@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+<head>
+<meta charset='UTF-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<title>Gi Group </title>
+<link rel="icon" type="image/png" href="https://gigroup-bi.github.io/html-css/saint-gobain/LogoGi.png">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .sidebar {
+    width: 220px;
+    background-color: #2f3542;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+  .sidebar h2 {
+    text-align: center;
+    margin-bottom: 10%;
+    font-weight: 600;
+  }
+  .menu-item {
+    padding: 5% 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-left: 5px solid transparent;
+    user-select: none;
+  }
+  .menu-item:hover {
+    background-color: #57606f;
+  }
+  .menu-item.active {
+    background-color: #3742fa;
+    border-left: 5px solid #70a1ff;
+  }
+  .content {
+    flex-grow: 1;
+    background-color: #f1f2f6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  iframe {
+    border: 0;
+    margin-top: 2%;
+    width: 98%;      /* largura fixa conforme seu exemplo */
+    height: 95%;   /* altura fixa conforme seu exemplo */
+  }
+
+  /* Responsivo para telas menores */
+  @media (max-width: 1200px) {
+    iframe {
+      width: 90vw;
+      height: calc(90vw * 0.8); /* mantém proporção 1140:541.25 */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class='sidebar'>
+  <h2>Gi Group</h2>
+  <div class='menu-item active' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=84e20008-e8cd-479c-a1ce-3a645bac4275&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>KPI Mensal</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=a46eb454-7a08-426e-ad46-c87bb61652a7&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>Health Score</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=58f7cf9b-1e1f-4942-9c41-19fae3066d6b&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>Ad. Fat. Trade</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=d83fc7bf-d0c6-4803-9b4b-3be8fdbb66fb&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>Visita Perfeita</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=1c12c32f-18c0-4932-8435-0295c92aa420&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>HC Operacional</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=1ec5df1e-a16a-49c7-a8ad-51c9a1471883&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>Líderes</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=d869f77d-8268-4ab3-8856-bf60cd04c120&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>HS Operação</div>
+  <div class='menu-item' onclick='loadDashboard(event, "https://app.powerbi.com/reportEmbed?reportId=0d74176f-15e6-4b13-92d2-267fff5a7e63&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true")'>KPI Mensal até Junho</div>
+</div>
+
+<div class='content'>
+  <iframe 
+    id='dashboard-frame' 
+    title='Dashboard'
+    src='https://app.powerbi.com/reportEmbed?reportId=84e20008-e8cd-479c-a1ce-3a645bac4275&autoAuth=true&ctid=64bf466f-84c1-4aa6-abe5-65ec5fb1a327&actionBarEnabled=true' 
+    allowfullscreen='true' 
+    frameborder='0'>
+  </iframe>
+</div>
+
+<script>
+  const menuItems = document.querySelectorAll('.menu-item');
+  const iframe = document.getElementById('dashboard-frame');
+
+  function loadDashboard(event, url) {
+    iframe.src = url;
+    menuItems.forEach(item => item.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
